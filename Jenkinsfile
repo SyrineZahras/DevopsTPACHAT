@@ -9,7 +9,7 @@ pipeline {
 
      environment { 
         registry = "muckydreamz/tpachatdevops" 
-        registryCredential = 'dockerHub' 
+        registryCredential = 'dockerhub' 
         dockerImage = '' 
     }
     
@@ -29,7 +29,7 @@ pipeline {
                 }
             }
         }
-        
+
         stage("Maven Build") {
             steps {
                 script {
