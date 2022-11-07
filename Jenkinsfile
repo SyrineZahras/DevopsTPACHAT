@@ -7,16 +7,6 @@ pipeline {
         jdk 'JAVA_HOME'
     }
 
-     environment { 
-        registry = "syrine123456789/tpachatdevops" 
-        registryCredential = 'dockerhub' 
-           NEXUS_VERSION = 'nexus3' 
-           NEXUS_PROTOCOL = 'http'
-           NEXUS_URL = 'http://172.10.0.140:8081'
-           NEXUS_REPOSITORY = 'nexus-repo-devops'
-           NEXUS_CREDENDIAL_ID = 'nexus-user-credentials'
-        dockerImage = '' 
-    }
     
     stages {
         stage('Checkout Git') {
@@ -50,36 +40,17 @@ pipeline {
                                           sh 'echo "login Docker ...."'
                    	sh 'docker login -u syrine123456789 -p Sysysyrine1'
                                }  }
+
 		 stage('Docker push') {
 
                  steps {
                       sh 'echo "Docker is pushing ...."'
-                     	sh 'docker push syrine123456789/DevopsTPACHAT1'
+                     	sh 'docker push syrine123456789/tpdevops'
                         }  }
-         stage('Docker compose') {
-
-                          steps {
-                               sh 'docker-compose up -d'
-                                 }  }
-
         
 
-        stage('Building Docker image') { 
-            steps { 
-                script { 
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
-                }
-            } 
-        }
-        stage('Push Docker image') { 
-            steps { 
-                script { 
-                    docker.withRegistry( '', registryCredential ) { 
-                        dockerImage.push() 
-                    }
-                } 
-            }
-        } 
+        
+        
     }
     post {
             failure {
