@@ -37,12 +37,13 @@ pipeline {
            }
         }
 
-        stage('NEXUS'){
-            steps{
-                  echo "nexus"
-                  sh ' mvn deploy -DskipTests'
-            }
-        }
+                                         stage('NEXUS')
+                                                 {
+                                                     steps{
+                                                         echo "nexus"
+                                                           sh ' mvn deploy -DskipTests'
+                                                     }
+                                                  }
 
         stage("Maven Build") {
             steps {
