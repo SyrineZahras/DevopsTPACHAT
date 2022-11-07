@@ -8,7 +8,7 @@ pipeline {
     }
 
      environment { 
-        registry = "muckydreamz/tpachatdevops" 
+        registry = "syrine123456789/tpachatdevops" 
         registryCredential = 'dockerhub' 
            NEXUS_VERSION = 'nexus3' 
            NEXUS_PROTOCOL = 'http'
@@ -22,7 +22,7 @@ pipeline {
         stage('Checkout Git') {
             steps {
                 echo 'Pulling ...';
-                git branch : 'master',
+                git branch : 'syrine',
                 // Get some code from a GitHub repository
                 url: 'https://github.com/SyrineZahras/DevopsTPACHAT.git'
 
