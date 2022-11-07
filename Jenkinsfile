@@ -22,7 +22,7 @@ pipeline {
         stage('Checkout Git') {
             steps {
                 echo 'Pulling ...';
-                git branch : 'master',
+                git branch : 'ahlem',
                 // Get some code from a GitHub repository
                 url: 'https://github.com/SyrineZahras/DevopsTPACHAT.git'
 
