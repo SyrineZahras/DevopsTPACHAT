@@ -30,6 +30,14 @@ pipeline {
             }
         }
         
+        stage("Maven Build") {
+            steps {
+                script {
+                    sh "mvn package -DskipTests=true"
+                }
+            }
+        }
+
         stage('Building Docker image') { 
             steps { 
                 script { 
