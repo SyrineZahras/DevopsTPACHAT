@@ -10,6 +10,11 @@ pipeline {
      environment { 
         registry = "muckydreamz/tpachatdevops" 
         registryCredential = 'dockerhub' 
+           NEXUS_VERSION = 'nexus3' 
+           NEXUS_PROTOCOL = 'http'
+           NEXUS_URL = 'http://172.10.0.140:8081'
+           NEXUS_REPOSITORY = 'nexus-repo-devops'
+           NEXUS_CREDENDIAL_ID = 'nexus-user-credentials'
         dockerImage = '' 
     }
     
