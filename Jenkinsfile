@@ -33,17 +33,22 @@ pipeline {
 
         stage('Build Maven Spring'){
             steps{
-                                                     sh 'mvn  clean install '
-                                                  }
-                                              }
+                 sh 'mvn  clean install '
+           }
+        }
 
-                                         stage('NEXUS')
-                                                 {
-                                                     steps{
-                                                         echo "nexus"
-                                                           sh ' mvn deploy -DskipTests'
-                                                     }
-                                                  }
+        stage('NEXUS'){
+            steps{
+                  echo "nexus"
+                  sh ' mvn deploy -DskipTests'
+            }
+        }
+
+        stage('MVN SONARQUBE '){
+            steps{
+                  sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=esprit'
+            }
+        }
 
         stage("Maven Build") {
             steps {
