@@ -7,6 +7,12 @@ pipeline {
         jdk 'JAVA_HOME'
     }
 
+     environment { 
+        registry = "muckydreamz/tpachatdevops" 
+        registryCredential = 'dockerHub' 
+        dockerImage = '' 
+    }
+    
     stages {
         stage('Checkout Git') {
             steps {
