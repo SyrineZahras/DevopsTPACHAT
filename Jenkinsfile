@@ -33,9 +33,9 @@ pipeline {
 
         stage('Build Maven Spring'){
             steps{
-                 sh 'mvn  clean install '
-           }
-        }
+                                                     sh 'mvn  clean install '
+                                                  }
+                                              }
 
                                          stage('NEXUS')
                                                  {
