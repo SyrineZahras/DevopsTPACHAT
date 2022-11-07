@@ -45,7 +45,7 @@ pipeline {
 
                  steps {
                       sh 'echo "Docker is pushing ...."'
-                     	sh 'docker push syrine123456789/tpdevops'
+                     	sh 'docker push syrine123456789/tpachatdevops'
                         }  }
         
 
