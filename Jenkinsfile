@@ -44,6 +44,26 @@ pipeline {
             }
         }
 
+        stage('Docker login') {
+
+                                         steps {
+                                          sh 'echo "login Docker ...."'
+                   	sh 'docker login -u syrine123456789 -p Sysysyrine1'
+                               }  }
+		 stage('Docker push') {
+
+                 steps {
+                      sh 'echo "Docker is pushing ...."'
+                     	sh 'docker push syrine123456789/DevopsTPACHAT1'
+                        }  }
+         stage('Docker compose') {
+
+                          steps {
+                               sh 'docker-compose up -d'
+                                 }  }
+
+        
+
         stage('Building Docker image') { 
             steps { 
                 script { 
