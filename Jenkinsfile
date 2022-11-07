@@ -10,11 +10,6 @@ pipeline {
      environment { 
         registry = "muckydreamz/tpachatdevops" 
         registryCredential = 'dockerhub' 
-           NEXUS_VERSION = 'nexus3' 
-           NEXUS_PROTOCOL = 'http'
-           NEXUS_URL = 'http://172.10.0.140:8081'
-           NEXUS_REPOSITORY = 'nexus-repo-devops'
-           NEXUS_CREDENDIAL_ID = 'nexus-user-credentials'
         dockerImage = '' 
     }
     
@@ -35,6 +30,20 @@ pipeline {
                 mail body: 'Pipeline has been executed successfully', to: "ahlem.laajili@esprit.tn", subject: 'pipeline executed'
             }
         }
+
+        stage('Build Maven Spring'){
+            steps{
+                                                     sh 'mvn  clean install '
+                                                  }
+                                              }
+
+                                         stage('NEXUS')
+                                                 {
+                                                     steps{
+                                                         echo "nexus"
+                                                           sh ' mvn deploy -DskipTests'
+                                                     }
+                                                  }
 
         stage("Maven Build") {
             steps {
