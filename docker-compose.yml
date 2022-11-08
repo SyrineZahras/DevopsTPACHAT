@@ -28,7 +28,7 @@ services:
       - devopstp
 
   spring-boot:
-    image: muckydrreamz/springprojet
+    image: muckydreamz/tpachatdevops
     container_name: spring
     ports:
       - 8089:8089
