@@ -7,6 +7,12 @@ pipeline {
         jdk 'JAVA_HOME'
     }
 
+     environment { 
+        registry = "syrine123456789/tpachatdevops" 
+        registryCredential = 'dockerhub' 
+        dockerImage = '' 
+    }
+
     
     stages {
         stage('Checkout Git') {
