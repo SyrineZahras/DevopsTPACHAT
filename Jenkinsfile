@@ -74,10 +74,16 @@ pipeline {
                 } 
             }
         } 
+        stage('Docker Compose') {
+            steps {
+                sh 'docker-compose up -d'
+            }
+        }
+        
     }
     post {
             failure {
-                mail body: 'Pipeline has failed', to: "syrine.zahras@esprit.tn", subject: 'Pipeline fail'
+                mail body: 'Pipeline has failed', to: "ahlem.laajili@esprit.tn", subject: 'Pipeline fail'
             }
     }
 }
