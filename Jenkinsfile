@@ -32,6 +32,19 @@ pipeline {
             }
         }
 
+        stage('Build Maven Spring'){
+            steps{
+                 sh 'mvn  clean install '
+           }
+        }
+
+        stage('NEXUS'){
+            steps{
+                  echo "nexus"
+                  sh ' mvn deploy -DskipTests'
+            }
+        }
+
         stage("Maven Build") {
             steps {
                 script {
