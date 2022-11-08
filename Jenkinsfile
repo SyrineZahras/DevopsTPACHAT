@@ -34,19 +34,22 @@ pipeline {
             }
         }
 
-        stage('Docker login') {
-
-                                         steps {
-                                          sh 'echo "login Docker ...."'
-                   	sh 'docker login -u syrine123456789 -p Sysysyrine1'
-                               }  }
-
-		 stage('Docker push') {
-
-                 steps {
-                      sh 'echo "Docker is pushing ...."'
-                     	sh 'docker push syrine123456789/tpachatdevops'
-                        }  }
+        stage('Building Docker image') { 
+            steps { 
+                script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                }
+            } 
+        }
+        stage('Push Docker image') { 
+            steps { 
+                script { 
+                    docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                    }
+                } 
+            }
+        }
         
 
         
