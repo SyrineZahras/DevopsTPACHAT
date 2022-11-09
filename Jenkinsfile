@@ -36,13 +36,21 @@ pipeline {
             }
         }
 
+
         stage("Maven Build") {
             steps {
                 script {
-                    sh "mvn package -DskipTests=true"
+                    sh "mvn clean install -DskipTests"
                 }
             }
         }
+
+        stage('MVN COMPILE') { 
+            steps { 
+               sh' mvn compile' 
+                
+            }
+         }
 
         // stage('Building Docker image') { 
         //     steps { 
