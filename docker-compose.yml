@@ -3,7 +3,7 @@ services:
 
   database:
     image: mysql:8
-    container_name: mysql
+    container_name: mysqldb
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: tpachato
