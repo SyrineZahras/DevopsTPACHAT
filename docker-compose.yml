@@ -22,6 +22,14 @@ services:
       - database
     networks:
       - devopstp
+    environment:
+     SPRING_APPLICATION_JSON: '{
+            "spring.datasource.url"  : "jdbc:mysql://mysql:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+            "spring.datasource.username" : "$MYSQLDB_USER",
+            "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
+            "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+            "spring.jpa.hibernate.ddl-auto" : "update"
+          }'
     restart: on-failure
 
 networks:
