@@ -21,6 +21,14 @@ services:
       - database
     networks:
       - devopstp
+    environment:
+      SPRING_APPLICATION_JSON: '{
+            "spring.datasource.url"  : "jdbc:mysql://mysql:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?useSSL=false",
+            "spring.datasource.username" : "$MYSQLDB_USER",
+            "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
+            "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+            "spring.jpa.hibernate.ddl-auto" : "update"
+          }'
     restart: on-failure
   
   angular:
@@ -30,8 +38,6 @@ services:
       - 88:88
     depends_on:
       - spring-boot
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/database?autoReconnect=true&useSSL=false   
     networks:
       - devopstp
 
