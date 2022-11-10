@@ -32,7 +32,7 @@ services:
     restart: on-failure
   
   angular:
-    image: muckydreamz/devopsfront:13
+    image: muckydreamz/devopsfront:16
     container_name: angular
     ports:
       - 88:88
