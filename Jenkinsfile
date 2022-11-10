@@ -30,7 +30,27 @@ pipeline {
             }
         }
 
-        stage('Build Maven Spring'){
+               stage('Compile Maven Project'){
+          steps{
+             sh 'mvn  compile '
+          }                                                            
+     }
+ 
+       stage('Mock & JUnit') {
+        steps {
+            script {
+              sh 'echo "********Mock & JUnit********"'
+              sh 'mvn test'
+            }
+        }
+       post {
+         always {
+            junit '**/target/surefire-reports/TEST-*.xml'
+        }
+      }
+     }
+        
+        stage('Clean Maven Spring'){
             steps{
                  sh 'mvn  clean install '
            }
@@ -99,3 +119,10 @@ pipeline {
 
 
 
+
+
+
+
+
+
+ 
