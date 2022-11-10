@@ -6,7 +6,7 @@ services:
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: devopstpachat
+      MYSQL_DATABASE: tpachato
     ports:
       - 3306:3306
     networks:
