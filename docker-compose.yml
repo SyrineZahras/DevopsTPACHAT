@@ -35,7 +35,7 @@ services:
           }'
 
   angular:
-    image: muckydreamz/devopsfront
+    image: muckydreamz/devopsfront:13
     container_name: angular
     ports:
       - 88:88
