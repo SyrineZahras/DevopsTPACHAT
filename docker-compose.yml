@@ -29,7 +29,7 @@ services:
     image: muckydreamz/tpachatdevops
     container_name: spring
     ports:
-      - 8089:8089
+      - 8085:8085
     depends_on:
       - database
     networks:
