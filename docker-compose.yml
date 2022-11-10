@@ -30,6 +30,8 @@ services:
       - 88:88
     depends_on:
       - spring-boot
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/database?autoReconnect=true&useSSL=false   
     networks:
       - devopstp
 
