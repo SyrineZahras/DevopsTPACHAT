@@ -15,7 +15,7 @@ services:
 
   spring-boot:
     image: muckydreamz/tpachatdevops
-    container_name: spring
+    container_name: springg
     ports:
       - 8089:8089
     depends_on:
