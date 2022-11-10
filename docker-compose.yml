@@ -8,8 +8,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: devopstpachat
-    volumes:
-      - /home/mysql/data:/var/lib/mysql
     ports:
       - 3306:3306
     networks:
