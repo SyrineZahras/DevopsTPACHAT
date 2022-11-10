@@ -1,16 +1,5 @@
 version: '3'
 services:
-  portainer:
-    image: portainer/portainer-ce:latest
-    container_name: portainer
-    restart: unless-stopped
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./portainer-data:/data
-    ports:
-      - 9000:9000
-
   database:
     image: mysql:8
     container_name: mysqldb
@@ -35,6 +24,24 @@ services:
     networks:
       - devopstp
     restart: on-failure
+    environment:
+      SPRING_APPLICATION_JSON: '{
+            "spring.datasource.url"  : "jdbc:mysql://mysql:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?useSSL=false",
+            "spring.datasource.username" : "$MYSQLDB_USER",
+            "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
+            "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+            "spring.jpa.hibernate.ddl-auto" : "update"
+          }'
+
+  angular:
+    image: muckydreamz/devopsfront
+    container_name: angular
+    ports:
+      - 88:88
+    depends_on:
+      - spring-boot
+    networks:
+      - devopstp
 
 networks:
   devopstp:

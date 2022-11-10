@@ -27,7 +27,6 @@ pipeline {
                     String dateString = date.format("dd-MM-yyyy")
                     println "Date : " + dateString
                 }
-                mail body: 'Pipeline has been executed successfully', to: "ahlem.laajili@esprit.tn", subject: 'pipeline executed'
             }
         }
 
@@ -82,8 +81,15 @@ pipeline {
         
     }
     post {
+            success {
+                mail body: "success on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}",
+                to: "ahlem.laajili@esprit.tn",
+                subject: "Pipeline Success"  
+            }
             failure {
-                mail body: 'Pipeline has failed', to: "ahlem.laajili@esprit.tn", subject: 'Pipeline fail'
+                mail body: "Job has failed${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}", 
+                to: "ahlem.laajili@esprit.tn",
+                subject: 'Pipeline fail'
             }
     }
 }
