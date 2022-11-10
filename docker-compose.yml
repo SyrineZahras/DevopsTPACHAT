@@ -3,8 +3,7 @@ services:
 
   database:
     image: mysql:8
-    container_name: mysqldb
-    restart: unless-stopped
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: devopstpachat
@@ -23,15 +22,7 @@ services:
     networks:
       - devopstp
     restart: on-failure
-    environment:
-      SPRING_APPLICATION_JSON: '{
-            "spring.datasource.url"  : "jdbc:mysql://mysql:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?useSSL=false",
-            "spring.datasource.username" : "$MYSQLDB_USER",
-            "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
-            "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-            "spring.jpa.hibernate.ddl-auto" : "update"
-          }'
-
+  
   angular:
     image: muckydreamz/devopsfront:13
     container_name: angular
