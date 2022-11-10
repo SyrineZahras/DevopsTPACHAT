@@ -36,7 +36,7 @@ public class OperateurServiceImplTest {
 
 
     @InjectMocks
-    IOperateurService operateurService;
+    OperateurServiceImpl operateurService;
 
     private Operateur operateur1 = new Operateur(1L,"test1","tes1","546125");
     private Operateur operateur2 = new Operateur(2L,"test2","test2","546125");

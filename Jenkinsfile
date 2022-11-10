@@ -97,6 +97,11 @@ stage       ('DOCKER COMPOSE') {
             }
         }
 
+         stage("Unit tests") {
+           steps {
+                 sh "mvn test"
+           }
+        }
 
 
         // stage('Building Docker image') { 
