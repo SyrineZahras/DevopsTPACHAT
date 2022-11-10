@@ -30,11 +30,11 @@ pipeline {
             }
         }
 
-               stage('Compile Maven Project'){
+        stage('Compile Maven Project'){
           steps{
              sh 'mvn  compile '
           }                                                            
-     }
+        }
  
        stage('Mock & JUnit') {
         steps {
